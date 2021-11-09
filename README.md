@@ -1,5 +1,7 @@
 # AceBook
 
+[![CircleCI](https://circleci.com/gh/s-palmer/acebook-st-bals/tree/main.svg?style=svg)](https://circleci.com/gh/s-palmer/acebook-st-bals/tree/main)
+
 ## Quickstart
 
 First, clone this repository. Then:
