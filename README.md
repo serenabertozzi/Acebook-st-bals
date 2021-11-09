@@ -1,5 +1,7 @@
 # AceBook
 
+![eta logo](/meta_logo.png)
+
 ## Quickstart
 
 First, clone this repository. Then:
@@ -24,5 +26,3 @@ ExecJS::RuntimeUnavailable:
 
 Rails requires a Javascript runtime to work. The easiest way is to install Node by running `brew install node` - and then run `bundle exec rspec` again
 
-
-TEST
