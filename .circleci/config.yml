@@ -4,6 +4,7 @@ version: 2.1
 
 dependencies:
   pre:
+    - rvm install 3.0.2
     - rvm install rubygems head
     - gem install bundler:2.2.29
 
@@ -17,7 +18,7 @@ orbs:
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.6.3-stretch-node
+      - image: cimg/ruby:3.0.2
     executor: ruby/default
     steps:
       - checkout
