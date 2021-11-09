@@ -1,5 +1,7 @@
 # AceBook
 
+![eta logo](/meta_logo.png)
+
 ## Table of Contents
 
 - [Stack](#stack)
@@ -22,6 +24,9 @@
 | <img src="public/images/bootstrap.png" height="40" width="auto"> | [Bootstrap](https://getbootstrap.com/)               | Bootstrap is a free and open-source CSS framework.      | Frontend design
 
 ## [Usage](https://github.com/s-palmer/acebook-st-bals#usage)
+=======
+
+## Quickstart
 
 First, clone this repository. Then:
 
