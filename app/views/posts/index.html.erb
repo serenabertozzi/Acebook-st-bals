@@ -9,8 +9,9 @@
     <tr>
       <th>Message</th>
       <th>Likes count</th>
-      <th>Image url</th>
+      <th>Time Created</th>
       <th colspan="3"></th>
+      
     </tr>
   </thead>
 
@@ -19,6 +20,7 @@
       <tr>
         <td><%= post.message %></td>
         <td><%= post.likes_count %></td>
+        <td>Created at: <%= post.created_at %></td> 
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -28,5 +30,3 @@
 </table>
 
 <br>
-
-<%= link_to 'New Post', new_post_path %>
