@@ -6,25 +6,28 @@
   </div>
 </div>
 
+<h1>Acebook</h1>
+
+<%= render 'form', post: @post %>
 
 <div class="container">
   <div class="row">
     <div class="col">
-        
-    <% @posts.each do |post| %>
 
-    <div class="card">
+    <% @posts.reverse.each do |post| %>
+        <div class="card">
       <div class="card-body">
+    
         <%= post.message %>
         <%= post.likes_count %>
-        <%= post.image_url %>
-        <%= link_to "Show", post %>
-        <%= link_to "Edit", edit_post_path(post) %>
-        <%= link_to "Destroy", post, method: :delete, data: { confirm: "Are you sure?" } %>
-      </div>
+        Posted <%= time_ago_in_words(post.created_at) %> ago. 
+        <%= link_to 'Show', post %></td>
+        <%= link_to 'Edit', edit_post_path(post) %></td>
+        <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+     </div>
     </div> 
-  <% end %>
-
-    </div>
-  </div>
+    <% end %>
+ 
 </div>
+    </div> 
+</div> 
