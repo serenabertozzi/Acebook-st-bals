@@ -15,7 +15,6 @@ class CommentsController < ApplicationController
     # you can call @post.post_id to get the post this comment belongs to
     @comment = Comment.new(post_id: params[:post_id])
     @post = Post.where("id = #{params[:post_id]}").first
-
   end
 
   # GET /comments/1/edit
@@ -24,11 +23,14 @@ class CommentsController < ApplicationController
 
   # POST /comments or /comments.json
   def create
+    puts 'LOOK HERE'
+    puts params
+    @post = Post.where("id = #{params[:comment][:post_id]}").first
     @comment = Comment.new(comment_params)
     
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment, notice: "Comment was successfully created." }
+        format.html { redirect_to @post, notice: "Comment was successfully created." }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new, status: :unprocessable_entity }
