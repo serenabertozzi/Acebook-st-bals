@@ -4,6 +4,7 @@ class PostsController < ApplicationController
   # GET /posts or /posts.json
   def index
     @posts = Post.all
+    @posts.each { |post| puts post }
     @post = Post.new
   end
 
