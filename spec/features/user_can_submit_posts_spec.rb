@@ -9,10 +9,11 @@ RSpec.feature "Timeline", type: :feature do
   end
   
   scenario "Posts show when they are created" do
+    #implement some timecop stuff later
     visit "/"
     fill_in "post[message]", with: "Hello, world!"
     click_button "Create Post"
     visit "/"
-    expect(page).to have_content("Created at:")
+    expect(page).to have_content("ago")
   end
 end

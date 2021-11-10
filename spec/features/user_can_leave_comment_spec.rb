@@ -6,9 +6,9 @@ RSpec.feature 'leaving a comment' do
     fill_in "post[message]", with: "Hello, world!"
     click_button "Create Post"
     visit '/'
-    click_link('View Comments')
-    fill_in "comment[message]", with: "test comment"
-    click_button "Post Comment"
+    click_link('Add Comment')
+    fill_in "comment[comment_text]", with: "test comment"
+    click_button "Create Comment"
     expect(page).to have_content("test comment")
   end
 end
