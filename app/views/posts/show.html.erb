@@ -11,9 +11,12 @@
 </p>
 
 <p>
-  <strong>Image url:</strong>
-  <%= @post.image_url %>
+  <strong>Image:</strong>
+
+  <% (0...@post.pictures.count).each do |picture| %>
+      <%= image_tag @post.pictures[picture], style: "width: 400px;" %>
+  <% end %>
 </p>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<%= link_to "Edit", edit_post_path(@post) %> |
+<%= link_to "Back", posts_path %>
