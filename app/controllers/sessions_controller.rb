@@ -1,9 +1,10 @@
-class SessionsController << ApplicationController
-  def new; end
+class SessionsController < ApplicationController
+  def new
+  end
 
   def create
     # search for a user by email params
-    user = User.find_by(:email params[:email])
+    user = User.find_by(email: params[:email])
     # if they exist and password is correct, log them in. else fail message.
     if user.present? && user.authenticate(params[:password])
       session[:user_id] = user.id

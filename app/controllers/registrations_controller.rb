@@ -9,9 +9,9 @@ class RegistrationsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to root_path, notice: "You successfully created an Acebook account"
     else
+      flash.now[:alert] = "Registration failed."
       render :new
     end
-    
   end
 
   private

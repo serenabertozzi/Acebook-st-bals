@@ -13,6 +13,6 @@ RSpec.feature "Timeline", type: :feature do
     fill_in "post[message]", with: "Hello, world!"
     click_button "Create Post"
     visit "/"
-    expect(page).to have_content("Created at:")
+    expect(page).to have_content("Posted")
   end
 end
