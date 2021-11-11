@@ -19,6 +19,8 @@
       <div class="card-body">
     
         <%= post.message %>
+        <%= post.user.id %>
+        <%= post.user.email %>
         <%= post.likes_count %>
         Posted <%= time_ago_in_words(post.created_at) %> ago. 
         <%= link_to "Show", post %></td>
