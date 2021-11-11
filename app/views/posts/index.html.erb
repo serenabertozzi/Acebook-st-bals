@@ -5,7 +5,7 @@
     </div class="col">
     <div class="col-6">
       <% @posts.reverse.each do |post| %>
-        <div class="card text-center">
+        <div class="card text-center mb-5">
           <div class="card-body">
             <% unless post.pictures.empty? %>
               <% (post.pictures).each do |picture| %>
