@@ -1,9 +1,8 @@
 <%= render "form", post: @post %>
 <div class="container">
-  <div class="row">
-    <div class="col">
-    </div class="col">
-    <div class="col-6">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-6 ">
+
       <% @posts.reverse.each do |post| %>
         <div class="card text-center mb-5">
           <div class="card-body">
@@ -14,27 +13,27 @@
             <% end %>
           </div>
           <div class="card-body">
-            <h5 class="card-title"><%= post.message%></h5>
+            <h5 class="card-title"><%= post.message %></h5>
             <%= post.likes_count %>
             Posted <%= time_ago_in_words(post.created_at) %> ago. 
-          </div class="card-body">
-          <div class="card-body">
-            <%= link_to "Edit", edit_post_path(post), class: "card-link"  %>
-            <%= link_to "Delete", post, method: :delete, data: { confirm: "Are you sure?" },  class: "card-link"  %>
-            <%= link_to "Add Comment", new_comment_path(post_id: post.id),  class: "card-link"  %>
+              <p>
+                <strong>Likes count:</strong>
+             <%= post.likes.count %> <%= (post.likes.count) == 1 ? "Like" : "Likes" %>
+              </p>
+            <%= link_to "Edit", edit_post_path(post), class: "card-link" %>
+            <%= link_to "Delete", post, method: :delete, data: { confirm: "Are you sure?" }, class: "card-link" %>
+            <%= link_to "Add Comment", new_comment_path(post_id: post.id), class: "card-link" %>
             
-            <% like_exists = post.likes.find { |like| like.user_id == session[:user_id]} %>
+            <% like_exists = post.likes.find { |like| like.user_id == session[:user_id] } %>
             <% if like_exists %>
-              <%= link_to 'Unlike', post_like_path(post, like_exists), method: :delete %>
+              <%= link_to "Unlike", post_like_path(post, like_exists), method: :delete %>
             <% else %>
               <%= link_to "Like", post_likes_path(post), method: :post %>
             <% end %>
 
-          </div class="card-body">
-        </div class="card">
+          </div>
+        </div>
       <% end %>
-    </div class="col-6">
-    <div class="col">
-    </div class="col">
-  </div class="row">
-</div class="container">
+    </div>
+    <div>
+</div>
