@@ -16,7 +16,7 @@
           </div>
           <div class="card-body">
             <h5 class="card-title"><%= post.message%></h5>
-            <p>Name: <%= post.user.first_name %> <%= post.user.last_name %> </p>
+            <p>Posted by <%= post.user.first_name %> <%= post.user.last_name %> </p>
             <%= post.likes_count %>
             Posted <%= time_ago_in_words(post.created_at) %> ago. 
           </div class="card-body">
