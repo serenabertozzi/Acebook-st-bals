@@ -36,7 +36,7 @@
       <ul class="navbar-nav">
         <li class="nav-item">
           <div class="nav-link active">
-            <%= Current.user.profile_photo %>
+            <%= image_tag Current.user.profile_photo, style:"width:60px" %>
             <%= Current.user.first_name %> <%= Current.user.last_name %>
           </div>
         </li>
