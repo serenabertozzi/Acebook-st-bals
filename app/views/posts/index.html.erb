@@ -16,9 +16,10 @@
           </div>
           <div class="card-body">
             <h5 class="card-title"><%= post.message%></h5>
+            <%= image_tag post.user.profile_photo, style: "width: 75px;", class: "card-img-top" %>
             <p>Posted by <%= post.user.first_name %> <%= post.user.last_name %> </p>
             <%= post.likes_count %>
-            Posted <%= time_ago_in_words(post.created_at) %> ago. 
+            Posted <%= time_ago_in_words(post.created_at) %> ago.
           </div class="card-body">
           <div class="card-body">
             <% if post.user.id == session[:user_id] %>

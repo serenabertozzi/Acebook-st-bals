@@ -1,5 +1,8 @@
 class User < ApplicationRecord
+
+  has_one_attached :profile_photo, service: :local
   has_many :posts
+
   # adds virtual attributes for authentication
   # adds methods to set and authenticate against the bcrypt password
   # must use the naming convention xxx_digest where xxx is the attribute name of our desired password
