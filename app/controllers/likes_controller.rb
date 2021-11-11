@@ -1,26 +1,32 @@
 class LikesController < ApplicationController
   before_action :get_post
-
-  # POST /posts or /posts.json
+  before_action :find_like, only: [:destroy]
+  
   def create
-    @post.likes.create(user_id: "1")
-    # Once session is implemented, change user_id argument to "current_user.id"
-    redirect_to post_path(@post)
+    if !already_liked?
+      @post.likes.create(user_id: session[:user_id])
+      redirect_to post_path(@post)
+    else
+      destroy
+    end
   end
 
-  # # DELETE /posts/1 or /posts/1.json
-  # def destroy
-  #   @like.destroy
-  #   format.js { render inline: "location.reload();" }
-  # end
-
-  # def count
-  #   #Like.where(post_id matches post_id)
-  # end
+  def destroy
+    @like.destroy
+    redirect_to post_path(@post)
+  end
 
   private
 
   def get_post
     @post = Post.find(params[:post_id])
   end
+
+  def already_liked?
+    Like.where(user_id: session[:user_id], post_id:params[:post_id]).exists?
+  end
+
+  def find_like
+    @like = @post.likes.find(params[:id])
+ end
 end
