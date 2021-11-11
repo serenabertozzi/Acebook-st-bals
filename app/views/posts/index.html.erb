@@ -16,7 +16,7 @@
         <%= link_to "Delete", post, method: :delete, data: { confirm: "Are you sure?" } %></td>
         <%= link_to "Add Comment", new_comment_path(post_id: post.id) %>
 
-        <%= link_to "Like", post_like_path(post_id: post.id, user_id: "5"), method: :post %>
+        <%= link_to "Like", post_likes_path(post), method: :post %>
 
      </div>
     </div> 
