@@ -1,13 +1,9 @@
 class LikesController < ApplicationController
-
-  # GET /posts/new
-  def new
-    @like = Like.new
-  end
+# before_action :get_post
 
   # POST /posts or /posts.json
   def create
-    @like = Like.new(like_params)
+    @like = Like.new({params[:post_id]})
     @like.save
     format.js { render inline: "location.reload();" }
   end
@@ -17,4 +13,14 @@ class LikesController < ApplicationController
     @like.destroy
     format.js { render inline: "location.reload();" }
   end
+
+  def count
+    #Like.where(post_id matches post_id)
+  end
+
+  private
+
+  # def get_post
+  #   @post = Post.where("id = #{params[:post_id]}")
+  # end
 end
