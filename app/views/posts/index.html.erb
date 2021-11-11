@@ -17,16 +17,17 @@
     <% @posts.reverse.each do |post| %>
         <div class="card">
       <div class="card-body">
-        <%= post.message %>
-        <p>User ID</p>
-        <%= post.user.id %>
-        <p>User email</p>
-        <%= post.user.email %>
+        <p>Name: <%= post.user.first_name %> <%= post.user.last_name %> </p>
+        <p>User email: <%= post.user.email %> </p>
+        <p>Message: <%= post.message %> </p>
+        
         <%= post.likes_count %>
         Posted <%= time_ago_in_words(post.created_at) %> ago. 
         <%= link_to "Show", post %></td>
-        <%= link_to "Edit", edit_post_path(post) %></td>
-        <%= link_to "Delete", post, method: :delete, data: { confirm: "Are you sure?" } %></td>
+        <% if post.user.id == session[:user_id] %>
+          <%= link_to "Edit", edit_post_path(post) %></td>
+          <%= link_to "Delete", post, method: :delete, data: { confirm: "Are you sure?" } %></td>
+        <% end %>
      </div>
     </div> 
     <% end %>
