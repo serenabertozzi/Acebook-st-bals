@@ -13,8 +13,8 @@
 <p>
   <strong>Image:</strong>
 
-  <% (0...@post.pictures.count).each do |picture| %>
-      <%= image_tag @post.pictures[picture], style: "width: 400px;" %>
+  <% (@post.pictures).each do |picture| %>
+      <%= image_tag picture, style: "width: 400px;" %>
   <% end %>
 </p>
 

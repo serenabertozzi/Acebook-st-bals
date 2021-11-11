@@ -5,9 +5,9 @@
       <% @posts.reverse.each do |post| %>
         <div class="card text-center">
           <div class="card-body">
-            <% if post.pictures.count > 0 %>
-              <% (0...post.pictures.count).each do |picture| %>
-                <%= image_tag post.pictures[picture], style: "width: 400px;", class: "card-img-top" %>
+            <% unless post.pictures.empty? %>
+              <% (post.pictures).each do |picture| %>
+                <%= image_tag picture, style: "width: 400px;", class: "card-img-top" %>
               <% end %>
             <% end %>
           </div>
