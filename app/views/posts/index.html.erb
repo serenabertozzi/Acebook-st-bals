@@ -19,7 +19,6 @@
             Posted <%= time_ago_in_words(post.created_at) %> ago. 
           </div class="card-body">
           <div class="card-body">
-            <%= link_to "Show", post, class: "card-link" %>
             <%= link_to "Edit", edit_post_path(post), class: "card-link"  %>
             <%= link_to "Delete", post, method: :delete, data: { confirm: "Are you sure?" },  class: "card-link"  %>
             <%= link_to "Add Comment", new_comment_path(post_id: post.id),  class: "card-link"  %>
