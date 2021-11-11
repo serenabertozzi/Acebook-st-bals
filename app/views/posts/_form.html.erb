@@ -11,20 +11,22 @@
   <% end %>
   <div class="container">
     <div class="row">
-      <div class="col text-center m-3">
+      <div class="col"></div>
+      <div class="col-6 text-center m-3">
         <div class="field">
           <%= form.text_field :message, class: "form-control" %>
         </div>
-      </br>
-      <div class="field">
-        <%= form.label :upload_Image %>
-        <%= form.file_field :pictures, multiple: true, class: "btn btn-light" %>
+        </br>
+        <div class="field">
+          <%= form.label :upload_Image %>
+          <%= form.file_field :pictures, multiple: true, class: "btn btn-light" %>
+        </div>
+        </br>
+        <div class="actions">
+          <%= form.submit class: "btn btn-primary" %>
+        </div>
       </div>
-    </br>
-    <div class="actions">
-      <%= form.submit class: "btn btn-primary" %>
-    </div>
+      <div class="col"></div>
   </div>
-</div>
 </div>
 <% end %>
