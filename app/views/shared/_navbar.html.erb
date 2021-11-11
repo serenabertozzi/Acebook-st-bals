@@ -30,7 +30,11 @@
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
+        
       </form>
+      <%= button_to('Sign Up', sign_up_path, method: "get") %>
+      <%= button_to('Sign In', sign_in_path, method: "get") %>
+      <%= button_to('Log Out', log_out_path, method: "delete") %>
     </div>
   </div>
 </nav>
