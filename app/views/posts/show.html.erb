@@ -16,10 +16,21 @@
 <p>
   <strong>Image:</strong>
 
-  <% (0...@post.pictures.count).each do |picture| %>
-      <%= image_tag @post.pictures[picture], style: "width: 400px;" %>
+  <% (@post.pictures).each do |picture| %>
+      <%= image_tag picture, style: "width: 400px;" %>
   <% end %>
 </p>
 
-<%= link_to "Edit", edit_post_path(@post) %> |
-<%= link_to "Back", posts_path %>
+<p>
+  <strong>Comments</strong>
+
+  <% @comments.each do |c| %>
+     <h1> <%= c.comment_text %> </h1>
+  <% end %>
+  
+</p>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %> |
+<%= link_to 'Add Comment', new_comment_path(post_id: @post.id) %>
+
