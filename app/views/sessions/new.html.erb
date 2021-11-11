@@ -1,0 +1,19 @@
+<h1>Please Sign In</h1>
+
+<%= form_with(local: true, url: sign_in_url) do |form| %>
+
+<div>
+  <%= form.label :email %>
+  <%= form.text_field :email, id: 'email' %>
+</div>
+
+<div>
+  <%= form.label :password %>
+  <%= form.password_field :password, id: 'password' %>
+</div>
+
+<div>
+  <%= form.submit 'Log In' %>
+</div>
+
+<% end %>
