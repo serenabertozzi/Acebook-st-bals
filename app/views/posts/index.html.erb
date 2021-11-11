@@ -1,34 +1,29 @@
-<div class="container">
-  <div class="row">
-    <div class="col text-center m-3">
-        <%= link_to "New Post", new_post_path, class: "btn btn-primary" %>
-    </div>
-  </div>
-</div>
-
-<h1>Acebook</h1>
-
 <%= render "form", post: @post %>
-
 <div class="container">
   <div class="row">
     <div class="col">
-
-    <% @posts.reverse.each do |post| %>
-        <div class="card">
-      <div class="card-body">
-    
-        <%= post.message %>
-        <%= post.likes_count %>
-        Posted <%= time_ago_in_words(post.created_at) %> ago. 
-        <%= link_to "Show", post %></td>
-        <%= link_to "Edit", edit_post_path(post) %></td>
-        <%= link_to "Delete", post, method: :delete, data: { confirm: "Are you sure?" } %></td>
-        <%= link_to "Add Comment", new_comment_path(post_id: post.id) %>
-     </div>
-    </div> 
-    <% end %>
- 
-</div>
-    </div> 
-</div> 
+      <% @posts.reverse.each do |post| %>
+        <div class="card text-center">
+          <div class="card-body">
+            <% if post.pictures.count > 0 %>
+              <% (0...post.pictures.count).each do |picture| %>
+                <%= image_tag post.pictures[picture], style: "width: 400px;", class: "card-img-top" %>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title"><%= post.message%></h5>
+            <%= post.likes_count %>
+            Posted <%= time_ago_in_words(post.created_at) %> ago. 
+          </div class="card-body">
+          <div class="card-body">
+            <%= link_to "Show", post, class: "card-link" %>
+            <%= link_to "Edit", edit_post_path(post), class: "card-link"  %>
+            <%= link_to "Delete", post, method: :delete, data: { confirm: "Are you sure?" },  class: "card-link"  %>
+            <%= link_to "Add Comment", new_comment_path(post_id: post.id),  class: "card-link"  %>
+          </div class="card-body">
+        </div class="card">
+      <% end %>
+    </div class="col">
+  </div class="row">
+</div class="container">
