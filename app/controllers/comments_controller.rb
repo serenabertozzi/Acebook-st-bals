@@ -23,8 +23,6 @@ class CommentsController < ApplicationController
 
   # POST /comments or /comments.json
   def create
-    puts 'LOOK HERE'
-    puts params
     @post = Post.where("id = #{params[:comment][:post_id]}").first
     @comment = Comment.new(comment_params)
     
