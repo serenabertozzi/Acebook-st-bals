@@ -17,9 +17,10 @@
     <% @posts.reverse.each do |post| %>
         <div class="card">
       <div class="card-body">
-    
         <%= post.message %>
+        <p>User ID</p>
         <%= post.user.id %>
+        <p>User email</p>
         <%= post.user.email %>
         <%= post.likes_count %>
         Posted <%= time_ago_in_words(post.created_at) %> ago. 
