@@ -24,6 +24,7 @@
         <%= link_to "Show", post %></td>
         <%= link_to "Edit", edit_post_path(post) %></td>
         <%= link_to "Delete", post, method: :delete, data: { confirm: "Are you sure?" } %></td>
+        <%= link_to "Add Comment", new_comment_path(post_id: post.id) %>
      </div>
     </div> 
     <% end %>
