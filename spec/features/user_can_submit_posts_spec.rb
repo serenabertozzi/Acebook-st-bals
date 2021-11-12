@@ -22,4 +22,12 @@ RSpec.feature "Timeline", type: :feature do
     visit "/"
     expect(page).to have_content("Posted less than a minute ago.")
   end
+
+  scenario "User cannot post a blank post" do
+    register_and_sign_in
+    visit "/"
+    click_button "Create Post"
+    visit "/"
+    expect(page).to have_content("Please enter a valid message")
+  end
 end

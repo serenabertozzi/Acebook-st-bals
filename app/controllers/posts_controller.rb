@@ -13,11 +13,6 @@ class PostsController < ApplicationController
     @comments = Comment.where("post_id = #{@post.id}")
   end
 
-  # GET /posts/new
-  def new
-    @post = Post.new
-  end
-
   # GET /posts/1/edit
   def edit; end
 
