@@ -40,8 +40,7 @@ class PostsController < ApplicationController
         format.html { redirect_to root_path, notice: 'Post was successfully updated.' }
         format.json { render :show, status: :ok, location: @post }
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
+        format.html { redirect_to post_path, notice: 'Please enter a valid message.' }
       end
     end
   end
