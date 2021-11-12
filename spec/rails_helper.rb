@@ -9,6 +9,7 @@ require 'helpers/web_helpers.rb'
 require 'simplecov'
 require 'simplecov-console'
 # Add additional requires below this line. Rails is not loaded until this point!
+SimpleCov.start
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -29,10 +30,10 @@ require 'simplecov-console'
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
 
-SimpleCov.formatter = SimpleCov::Formatter::Console
+# SimpleCov.formatter = SimpleCov::Formatter::Console
 # or
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
-  SimpleCov::Formatter::HTMLFormatter,
+  # SimpleCov::Formatter::HTMLFormatter,
   SimpleCov::Formatter::Console,
 ])
 
