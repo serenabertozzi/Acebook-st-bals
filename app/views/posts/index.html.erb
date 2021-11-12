@@ -10,7 +10,8 @@
         <div class="card-body">
         
         <p>Posted by <%= post.user.first_name %> <%= post.user.last_name %> </p>
-          <%= image_tag post.user.profile_photo, style: "width: 75px;", class: "card-img-top" %>
+          <%= image_tag post.user.display_profile_photo %>
+          <%# <%= image_tag post.user.profile_photo, style: "width: 75px;", class: "card-img-top" %>
             <h5 class="card-title"><%= post.message%></h5>
             
           <div class="card-body">

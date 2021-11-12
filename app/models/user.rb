@@ -1,4 +1,11 @@
 class User < ApplicationRecord
+  def display_profile_photo
+    if profile_photo.attached?
+      profile_photo
+    else
+      '/images/saxophone_cat_400.png'
+    end
+  end
 
   has_one_attached :profile_photo, service: :local
   has_many :posts
