@@ -12,11 +12,7 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
-    # you can call @post.post_id to get the post this comment belongs to
     @post
-    # @comment = @post.comments.new
-  
-    
   end
 
   # GET /comments/1/edit
@@ -26,7 +22,6 @@ class CommentsController < ApplicationController
   # POST /comments or /comments.json
   def create
     @comment = @post.comments.new(comment_params)
-    # @comment = Comment.new(comment_params)
 
     respond_to do |format|
       if @comment.save
