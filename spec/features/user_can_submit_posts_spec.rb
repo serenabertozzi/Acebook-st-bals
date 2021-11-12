@@ -27,7 +27,6 @@ RSpec.feature "Timeline", type: :feature do
     register_and_sign_in
     visit "/"
     click_button "Create Post"
-    visit "/"
-    expect(page).to have_content("Please enter a valid message")
+    expect(page).to have_content("Please enter a valid message.")
   end
 end
