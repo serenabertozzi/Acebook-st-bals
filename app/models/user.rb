@@ -6,5 +6,8 @@ class User < ApplicationRecord
   # https://edgeapi.rubyonrails.org/classes/ActiveModel/SecurePassword/ClassMethods.html
   has_secure_password
   # validates email
+
+  has_many :likes
   validates :email, presence: true, uniqueness: true, format: { with: /\A[^@\s]+@[^@\s]+\z/, message: 'Invalid email' }
+
 end
