@@ -2,7 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.avatar {
-  border-radius: 50%;
+.nav_avatar {
+  border-radius: 54px;
   border: 5px solid black;
+  height: 54px;
+  margin: 5px;
+}
+
+.post_avatar {
+  border-radius: 54px;
+  border: 5px solid black;
+  height: 100px;
+  margin: 10px;
 }

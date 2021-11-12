@@ -3,7 +3,7 @@ class User < ApplicationRecord
     if profile_photo.attached?
       profile_photo
     else
-      '/images/saxophone_cat_400.png'
+      '/teamlogo.png'
     end
   end
 
