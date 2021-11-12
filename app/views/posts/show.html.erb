@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Message:</strong>
   <%= @post.message %>
@@ -23,7 +21,7 @@
   <strong>Comments</strong>
 
   <% @comments.each do |c| %>
-     <h1> <%= c.comment_text %> </h1>
+     <p> <%= c.comment_text %> </p>
   <% end %>
   
 </p>
