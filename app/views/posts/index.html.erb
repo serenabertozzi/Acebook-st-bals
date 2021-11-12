@@ -7,6 +7,12 @@
     <div class="col-6">
       <% @posts.reverse.each do |post| %>
         <div class="card text-center mb-5">
+        <div class="card-body">
+        
+        <p>Posted by <%= post.user.first_name %> <%= post.user.last_name %> </p>
+          <%= image_tag post.user.profile_photo, style: "width: 75px;", class: "card-img-top" %>
+            <h5 class="card-title"><%= post.message%></h5>
+            
           <div class="card-body">
             <% unless post.pictures.empty? %>
               <% (post.pictures).each do |picture| %>
@@ -14,10 +20,7 @@
               <% end %>
             <% end %>
           </div>
-          <div class="card-body">
-            <h5 class="card-title"><%= post.message%></h5>
-            <%= image_tag post.user.profile_photo, style: "width: 75px;", class: "card-img-top" %>
-            <p>Posted by <%= post.user.first_name %> <%= post.user.last_name %> </p>
+          
             <%= post.likes_count %>
             Posted <%= time_ago_in_words(post.created_at) %> ago.
           </div class="card-body">
