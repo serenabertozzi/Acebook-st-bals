@@ -1,72 +1,70 @@
 <% if Current.user %>
   <%= render "form", post: @post %>
 <% end %>
-
+<% if @posts.empty? && !Current.user %>
+  <% @user = User.new %>
+  <h1>Get Started on Acebook</h1>
+  <%= render "registrations/signupform", user: @user %>
+  <%= button_to("Sign In", sign_in_path, method: "get") %>
+<% end %>
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-12 col-md-6">
       <% @posts.reverse.each do |post| %>
         <div class="card text-center mb-5">
-        <div class="card-body">
-          <div class="align_left">
-          <p class="float_right">Posted by <%= post.user.first_name %> <%= post.user.last_name %> </p>
-            <%= image_tag post.user.display_profile_photo, class: "post_avatar" %>
+          <div class="card-body">
+            <div class="align_left">
+              <p class="float_right">Posted by <%= post.user.first_name %> <%= post.user.last_name %> </p>
+              <%= image_tag post.user.display_profile_photo, class: "post_avatar" %>
               <h5 class="card-title"><%= post.message%></h5>
-        </div>
-            
-          <div class="card-body">
-          <div class="card-title">
-            <% unless post.pictures.empty? %>
-              <% (post.pictures).each do |picture| %>
-                <%= image_tag picture, style: "width: 400px;", class: "card-img-top" %>
-              <% end %>
-            <% end %>
-          </div>
-          
-          <div class="card-body">
-            <h5 class="card-title"><%= post.message %></h5>
-            <%= post.likes_count %>
-            Posted <%= time_ago_in_words(post.created_at) %> ago. 
-
-              <p>
-                <strong>Likes count:</strong>
-             <%= post.likes.count %> <%= (post.likes.count) == 1 ? "Like" : "Likes" %>
-              </p>
-            <div class="d-flex justify-content-center">
-                <div class="border border-secondary m-3 rounded-3 p-2" style="width: 70%">
-
-                  <% post.comments[0, 3].each do |comment, i| %>
+            </div>
+            <div class="card-body">
+              <div class="card-title">
+                <% unless post.pictures.empty? %>
+                  <% (post.pictures).each do |picture| %>
+                    <%= image_tag picture, style: "width: 400px;", class: "card-img-top" %>
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title"><%= post.message %></h5>
+                <%= post.likes_count %>
+                Posted <%= time_ago_in_words(post.created_at) %> ago. 
+                <p>
+                  <strong>Likes count:</strong>
+                  <%= post.likes.count %> <%= (post.likes.count) == 1 ? "Like" : "Likes" %>
+                </p>
+                <div class="d-flex justify-content-center">
+                  <div class="border border-secondary m-3 rounded-3 p-2" style="width: 70%">
+                    <% post.comments[0, 3].each do |comment, i| %>
                       <% if comment.comment_text.length < 140 %>
                         <p><%= comment.comment_text %></p>
                       <% else %>
                         <p><%= truncate(comment.comment_text, length: 140) %></p>
                       <% end %>
                       <hr>
-                  <% end %>
-
-                <% unless post.comments.empty? %>
-                  <%= link_to "Read all comments", post %>
-                  <% else %>
-                    <p>No comments yet!</p>
-                  <% end %>
+                    <% end %>
+                    <% unless post.comments.empty? %>
+                      <%= link_to "Read all comments", post %>
+                    <% else %>
+                      <p>No comments yet!</p>
+                    <% end %>
+                  </div>
+                </div>
+                <% if Current.user %>
+                  <%= link_to "Edit", edit_post_path(post), class: "btn btn-primary" %>
+                  <%= link_to "Delete", post, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-primary", id: "btnDelete" %>
+                <% end %>
+                <%= link_to "Add Comment", new_post_comment_path(post_id: post.id), class: "btn btn-primary" %>
+                <% like_exists = post.likes.find { |like| like.user_id == session[:user_id] } %>
+                <% if like_exists %>
+                  <%= link_to "Unlike", post_like_path(post, like_exists), method: :delete, class: "btn btn-primary" %>
+                <% else %>
+                  <%= link_to "Like", post_likes_path(post), method: :post, class: "btn btn-primary" %>
+                <% end %>
               </div>
             </div>
-
-            <% if Current.user %>
-            <%= link_to "Edit", edit_post_path(post), class: "btn btn-primary" %>
-            <%= link_to "Delete", post, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-primary", id: "btnDelete" %>
-            <% end %>
-            <%= link_to "Add Comment", new_post_comment_path(post_id: post.id), class: "btn btn-primary" %>
-            
-            <% like_exists = post.likes.find { |like| like.user_id == session[:user_id] } %>
-            <% if like_exists %>
-              <%= link_to "Unlike", post_like_path(post, like_exists), method: :delete, class: "btn btn-primary" %>
-            <% else %>
-              <%= link_to "Like", post_likes_path(post), method: :post, class: "btn btn-primary" %>
-            <% end %>
-          </div>
+          <% end %>
         </div>
-      <% end %>
-    </div>
-  <div>
-</div>
+        <div>
+        </div>
