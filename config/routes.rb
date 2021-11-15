@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :password_resets
   get "sign-up", to: "registrations#new"
   post "sign-up", to: "registrations#create"
   get "sign-in", to: "sessions#new"
