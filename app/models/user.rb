@@ -19,5 +19,6 @@ class User < ApplicationRecord
 
   has_many :likes
   validates :email, presence: true, uniqueness: true, format: { with: /\A[^@\s]+@[^@\s]+\z/, message: 'Invalid email' }
-
+  validates :profile_photo, size: { less_than: 1.megabytes, message: 'Image must be less than 1MB' },
+                            content_type: ['image/png', 'image/jpg', 'image/jpeg']
 end
