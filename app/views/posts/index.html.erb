@@ -1,6 +1,14 @@
 <% if Current.user %>
   <%= render "form", post: @post %>
 <% end %>
+
+<% if @posts.empty? && !Current.user %>
+  <% @user = User.new %>
+  <h1>Get Started on Acebook</h1>
+  <%= render "registrations/signupform", user: @user %>
+  <%= button_to("Sign In", sign_in_path, method: "get") %>
+<% end %>
+
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-12 col-md-6">
@@ -21,7 +29,7 @@
                 <% end %>
               </div>
               <div class="card-body">
-                <%= post.likes_count %>
+                <h5 class="card-title"><%= post.message %></h5>           
                 Posted <%= time_ago_in_words(post.created_at) %> ago. 
                 <p>
                   <strong>Likes:</strong>
