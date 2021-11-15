@@ -35,7 +35,7 @@
             <div class="d-flex justify-content-center">
                 <div class="border border-secondary m-3 rounded-3 p-2" style="width: 70%" id="commentCard">
 
-                  <% post.comments[0, 4].each do |comment, i| %>
+                  <% post.comments.reverse[0, 3].each do |comment, i| %>
                       <% if comment.comment_text.length < 140 %>
                         <p><%= comment.comment_text %></p>
                       <% else %>
