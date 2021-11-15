@@ -23,4 +23,6 @@
 .byebug_history
 
 /storage/*
+/storage/
+
 coverage
