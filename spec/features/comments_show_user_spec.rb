@@ -5,8 +5,8 @@ feature 'comments' do
     register_and_sign_in
     create_test_post
     leave_test_comment
-    visit '/'
+    
     comment = find_by_id('commentCard')
-    expect(comment).to have_content('test')
+    expect(comment).to have_content('Bilbo Baggins')
   end
 end
