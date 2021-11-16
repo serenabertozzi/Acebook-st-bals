@@ -27,3 +27,10 @@ def create_test_post
   fill_in "post[message]", with: "Hello, world!"
   click_button "Create Post"
 end
+
+def leave_test_comment
+  visit '/'
+  click_link('Add Comment')
+  fill_in "comment[comment_text]", with: "test comment"
+  click_button "Create Comment"
+end

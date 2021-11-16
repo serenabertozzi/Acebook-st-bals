@@ -4,7 +4,7 @@ feature 'liking posts' do
     create_test_post
     click_link "Like"
 
-    expect(page).to have_content "Likes count: 1"
+    expect(page).to have_content "Likes: 1"
   end
 
   scenario 'user can unlike a post' do
@@ -13,7 +13,7 @@ feature 'liking posts' do
     click_link "Like"
     click_link "Unlike"
     
-    expect(page).to have_content "Likes count: 0"
+    expect(page).to have_content "Likes: 0"
   end
 end
 
