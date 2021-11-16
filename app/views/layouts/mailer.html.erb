@@ -3,11 +3,39 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <style>
+    @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
       /* Email styles need to be inline */
+      * {
+      font-size: 18px;
+      text-align: center;
+      font-family: 'Quicksand', sans-serif;
+      }
+
+      body {
+        background-color: #2cbbf4;
+      }
+
+      .mail-content {
+        margin: 20px;
+        margin-top: 35px;
+        padding: 25px;
+        background-color: white;
+        border-radius: 20px;
+      }
+
+      .hero {
+        font-size: 40px;
+        text-shadow: 3px 2px #dce0e2;
+        margin: 30px;
+      }
+
     </style>
   </head>
 
   <body>
+  <h1 class="hero">Acebook</h1>
+   <div class="mail-content">
     <%= yield %>
+  </div>
   </body>
 </html>
