@@ -5,5 +5,6 @@ RSpec.feature "Homepage", type: :feature do
     visit "/"
 
     expect(page).to have_content("Get Started on Acebook")
+    expect(page).to have_xpath('/html/body/form[1]/div[1]/input')
   end
 end
