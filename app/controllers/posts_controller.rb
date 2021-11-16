@@ -14,7 +14,11 @@ class PostsController < ApplicationController
   end
 
   # GET /posts/1/edit
-  def edit; end
+  def edit
+    if Current.user != @post.user
+      redirect_to root_path
+    end
+  end
 
   # POST /posts or /posts.json
   def create

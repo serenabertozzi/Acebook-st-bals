@@ -23,6 +23,7 @@ class User < ApplicationRecord
 
   has_one_attached :profile_photo, service: :local
   has_many :posts
+  has_many :comments
 
   # adds virtual attributes for authentication
   # adds methods to set and authenticate against the bcrypt password
