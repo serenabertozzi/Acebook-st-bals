@@ -5,16 +5,17 @@
 .nav_avatar {
   border-radius: 54px;
   border: 5px solid black;
-  height: 54px;
-  margin: 5px;
+  width: 34px;
+  height: 34px;
 }
 
 .post_avatar {
   max-width: 50px;
-  border-radius: 54px;
+  border-radius: 50%;
   border: 5px solid black;
-  height: 100px;
-  margin: 10px;
+  height: 6em;
+  width: 6em;
+  object-fit: fill;
 }
 
 .align_left {
