@@ -1,4 +1,4 @@
-json.extract! post, :id, :message, :likes_count, :created_at, :updated_at, :user_id
+json.extract! post, :id, :message, :likes_count, :created_at, :updated_at, :user_id, :video_url
 json.comments post.comments do |comment|
   json.partial! "comments/comment", comment: comment
 end
