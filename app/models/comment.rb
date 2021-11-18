@@ -5,4 +5,6 @@ class Comment < ApplicationRecord
   def author
     "#{user.first_name} #{user.last_name}"
   end
+
+  validates :comment_text, presence: true
 end
