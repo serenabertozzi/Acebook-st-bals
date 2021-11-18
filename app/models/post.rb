@@ -6,4 +6,9 @@ class Post < ApplicationRecord
   validates :message, presence: true
   validates :pictures, size: { less_than: 5.megabytes, message: 'Image must be less than 5MB' },
                        content_type: ['image/png', 'image/jpg', 'image/jpeg']
+
+  def likes_count
+    self.likes.count
+  end
+
 end
