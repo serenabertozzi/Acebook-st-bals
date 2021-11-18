@@ -1,0 +1,43 @@
+<div class="d-flex justify-content-left">
+  <div class="border border-secondary my-3 rounded-3 p-4 d-flex " style="width: 100%" id="commentCard">
+    <% post.comments.reverse[0, 1].each do |comment, i| %>
+      <div class="container">
+        <div class="row">
+          <div class="col-2 col-lg-1 d-flex flex-column text-center align-items-center mt-3">
+            <%= image_tag comment.user.display_profile_photo, class: "comment_avatar ms-3", style: "height:2em;width:2em" %>
+          </div>
+          <div class="col-8 col-lg-11 text-start">  
+            <% if comment.comment_text.length < 140 %>
+            <p><%= comment.comment_text %></p>
+            <% else %>
+              <p><%= truncate(comment.comment_text, length: 140) %></p>
+            <% end %>                         
+              <small>Posted by <%= comment.author %>, <%= time_ago_in_words(comment.created_at) %> ago.</small>
+          </div>
+        </div>
+      </div>       
+    <% end %>
+    <% unless post.comments.empty? %>
+      <hr>
+    <% end %>
+    <div class="container">
+      <div class="row">
+        <div class="col-4">
+          <% unless post.comments.empty? %>
+            <%= link_to "Read all comments [#{post.comments.count}]", post, class: "text-dark" %>
+          <% else %>
+            <p>No comments yet!</p>
+          <% end %>
+        </div>
+        <div class="col-8">
+          <div>
+            <%= form_for([post, Comment.new], remote: true) do |f| %>
+              <%= f.text_field :comment_text, placeholder: "Add a comment", label: false %>
+              <%= f.submit "Post Comment", class: "btn btn-dark", id: "post-submit", role: "status", remote: true, class: "btn btn-dark" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

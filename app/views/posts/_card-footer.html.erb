@@ -1,0 +1,18 @@
+<% if Current.user %>
+  <p>
+    <strong>Likes:</strong>
+    <%= post.likes.count %> <%= (post.likes.count) == 1 ? "Like" : "Likes" %>
+  </p>
+  <% like_exists = post.likes.find { |like| like.user_id == session[:user_id] } %>
+    <% if like_exists %>
+      <%= link_to "Unlike", post_like_path(post, like_exists), method: :delete, class: "btn btn-dark" %>
+    <% else %>
+      <%= link_to "Like", post_likes_path(post), method: :post, class: "btn btn-dark" %>
+    <% end %>
+
+  <% if Current.user == post.user %>
+    <%= link_to "Edit", edit_post_path(post), class: "btn btn-primary" %>
+    <%= link_to "Delete", post, method: :delete, data: { confirm: "Are you sure?" }, id: "btnDelete", class: "btn btn-danger" %>
+  <% end %>
+ 
+<% end %>
