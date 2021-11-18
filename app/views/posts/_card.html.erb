@@ -1,25 +1,35 @@
- <% @posts.reverse.each do |post| %>
-
-<div class="card mb-3">
-  <div class="row g-0">
-    <div class="col-md-3 d-flex flex-column text-center align-items-center my-5">  
-      <%= image_tag post.user.display_profile_photo, class: "post_avatar" %>
-        <div class="mt-2">
-          <p style="font-size: 15px;">Posted by <%= post.user.first_name %> <%= post.user.last_name %></p>
-          <p style="font-size: 10px;">Posted <%= time_ago_in_words(post.created_at) %> ago.</p>
+<% @posts.reverse.each do |post| %>
+  <div class="card mb-3">
+    <div class="row g-0">
+      <div class="col-md-3 d-flex flex-column text-center align-items-center my-5 justify-content-center">  
+        <% # Aside profile %>
+        <%= image_tag post.user.display_profile_photo, class: "post_avatar" %>
+          <div class="mt-2">
+            <p style="font-size: 15px; margin-bottom: 0;">Posted by <%= post.user.first_name %> <%= post.user.last_name %></p>
+            <small class="text-muted" style="font-size: 10px;">Posted <%= time_ago_in_words(post.created_at) %> ago.</small>
+            <%= render "card-footer", post: post %>
+          </div>
+      </div>
+      <div class="col-md-9 align-items-center">
+        <div class="card-body d-flex flex-fill flex-column align-items-stretch">
+        <% # Attached Picture %>
+          <% unless post.pictures.empty? %>
+            <% (post.pictures).each do |picture| %>
+              <%= image_tag picture, class: "card-img-top" %>
+            <% end %>
+          <% end %>
+        <% # Post message %>
+          <p class="card-title my-3">
+            <% if post.message.length < 280 %>
+              <%= post.message %>
+            <% else %>
+              <%= truncate(post.message, length: 280) %>
+               <%= link_to "Continue reading", post, class: "text-dark" %>
+            <% end %>
+          </p>
+          <%= render "comments", post: post, class: "d-flex align-self-stretch" %>
         </div>
-    </div>
-    <div class="col-md-9">
-      <div class="card-body">
-      <h5 class="card-title"><%= post.message %></h5>
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
       </div>
     </div>
   </div>
-</div>
-
-
-
- <% end %>
+<% end %>

@@ -13,3 +13,39 @@
  *= require_tree .
  *= require_self
  */
+
+.nav_avatar {
+  border-radius: 54px;
+  border: 1px solid black;
+  width: 34px;
+  height: 34px;
+}
+
+.post_avatar {
+  max-width: 50px;
+  border-radius: 50%;
+  border: 1px solid black;
+  height: 5em;
+  width: 5em;
+  object-fit: fill;
+}
+
+.comment_avatar {
+  max-width: 50px;
+  border-radius: 50%;
+  border: 1px solid black;
+  height: 5em;
+  width: 5em;
+  object-fit: fill;
+}
+
+.align_left {
+  text-align: left;
+  padding: 15px;
+}
+
+.float_right {
+  float: right;
+  padding-top: 50px;
+  padding-right: 61%;
+}
