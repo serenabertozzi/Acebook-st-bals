@@ -4,7 +4,7 @@ json.comments post.comments do |comment|
 end
 
 if post.pictures.attached?
-  json.images post.pictures.map{ |img| ({ url: url_for(img) }) }
+  json.images post.pictures.map{ |img| ({ url: polymorphic_url(img) }) }
 end
 
 
