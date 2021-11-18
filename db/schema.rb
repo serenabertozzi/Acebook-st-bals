@@ -66,7 +66,6 @@ ActiveRecord::Schema.define(version: 2021_11_18_121859) do
     t.string "message"
     t.integer "likes_count"
     t.string "video_url"
-
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
