@@ -28,6 +28,7 @@ gem "jbuilder", "~> 2.5"
 gem "bcrypt", "~> 3.1", ">= 3.1.16"
 gem "htmlbeautifier", "~> 1.3", ">= 1.3.1"
 gem "rufo"
+gem "font-awesome-rails"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
