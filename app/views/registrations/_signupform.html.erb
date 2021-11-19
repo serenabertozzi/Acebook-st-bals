@@ -36,11 +36,16 @@
           <%= form.file_field :profile_photo, class: "form-control my-2" %>
         </div>
 
+      <div class="d-flex justify-content-center">
         <div class="sign-up-form">
           <%= form.submit "Sign Up", class: "btn btn-dark m-2" %>
         </div>
 
+       
+
         <% end %>
+         <%= button_to "Sign In", sign_in_path, method: "get", class: "btn btn-dark m-2" %>
+         </div>
       </div>
     </div>
   </div>
