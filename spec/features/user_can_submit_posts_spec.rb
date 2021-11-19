@@ -14,6 +14,16 @@ RSpec.feature "Timeline", type: :feature do
 
     expect(page).to have_content("Hello, world!")
   end
+
+  scenario "Can add a post with an image" do
+    register_and_sign_in
+    fill_in "post[message]", with: "Hello, world!"
+    attach_file "post[pictures][]", 'public/teamlogo.png'
+    click_button "Create Post"
+
+    expect(page).to have_content("Hello, world!")
+    expect(page).to have_css('.card-img-top')
+  end
   
   scenario "Posts show a time ago message when they are created" do
     register_and_sign_in
