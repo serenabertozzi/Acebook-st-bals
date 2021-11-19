@@ -22,7 +22,7 @@
                <div class="modal-footer d-flex justify-content-center">        
                 <%= form_for([post, Comment.new], remote: true) do |f| %>
                 <%= f.text_field :comment_text, placeholder: "Add a comment", label: false %>
-                <%= f.submit "Post Comment", class: "btn btn-dark", id: "post-submit", role: "status", remote: true, class: "btn btn-dark" %>
+                <%= f.submit "Post Comment", class: "btn btn-dark", id: "post-submit", role: "status", remote: true %>
                 <% end %>
                </div>
                <div class="modal-body">
@@ -39,7 +39,7 @@
             <div class="col-9">
             <%= form_for([post, Comment.new], remote: true) do |f| %>
               <%= f.text_field :comment_text, placeholder: "Add a comment", label: false %>
-              <%= f.submit "Post Comment", class: "btn btn-dark", id: "post-submit", role: "status", remote: true, class: "btn btn-dark" %>
+              <%= f.submit "Post Comment", class: "btn btn-dark", id: "post-submit", role: "status", remote: true %>
             <% end %>
             </div>
           </div>
