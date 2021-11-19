@@ -13,23 +13,46 @@
 
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-6 text-center m-3">
+      <div class="col-8 text-center m-3">
         <div class="field">
           <%= form.text_field :message, class: "form-control mt-1", placeholder: "What's on your mind?" %>
         </div>
         <br>
-        <div class="field">
-          <%= form.label :upload_Image, class: "form-label" %>
-          <%= form.file_field :pictures, multiple: true, class: "form-control mt-1" %>
-        </div>
-        <br>
 
-        <div class="field">
-          <%= form.label :upload_Video, class: "form-label" %>
-          <%= form.text_field :video_url, class: "form-control mt-1", placeholder: "Paste your URL here..." %>
-        </div>
-       <br>
-
+<div class=" d-flex justify-content-around">
+    <div class="d-flex flex-column">
+          <p>
+            <button class="btn btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseImg" aria-expanded="false" aria-controls="collapseImg">
+              Upload an Image
+            </button>
+          </p>
+          <div class="collapse" id="collapseImg">
+            <div class="card card-body">
+              <div class="field">
+                <%= form.file_field :pictures, multiple: true, class: "form-control mt-1" %>
+              </div>
+              <br>
+            </div>
+          </div>
+          <p>
+          </div>
+          <div class="d-flex flex-column">
+            <button class="btn btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseVideo" aria-expanded="false" aria-controls="collapseVideo">
+              Upload a video
+            </button>
+          </p>
+          <div class="collapse" id="collapseVideo">
+            <div class="card card-body">
+              <div class="field">
+                <div class="field">
+                  <%= form.text_field :video_url, class: "form-control mt-1", placeholder: "Paste your URL here..." %>
+                </div>
+              </div>
+              <br>
+            </div>
+          </div>
+           </div>
+</div>
         <div class="actions">
           <%= form.submit class: "btn btn-primary " %>
         </div>
