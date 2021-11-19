@@ -1,11 +1,19 @@
-<h1>Reset Password</h1>
+<div class="container">
+  <div class="row justify-content-center vh-100 align-content-center">
+    <div class="col-12 col-md-6">
+    
+    <h1>Reset Password</h1>
 
-<%= form_tag password_resets_path, :method => :post do %>
-  <div class='field'>
-    <%= label_tag :email %>
-    <%= text_field_tag :email, params[:email] %>
+      <%= form_tag password_resets_path, :method => :post do %>
+        <div class='field'>
+          <%= label_tag :email %>
+          <%= text_field_tag :email, params[:email], class: "form-control my-2" %>
+        </div>
+          <div class='actions'>
+          <%= submit_tag "Reset Password", class: "btn btn-dark m-2" %>
+        </div>
+      <% end %>
+
+    </div>
   </div>
-    <div class='actions'>
-    <%= submit_tag "Reset Password" %>
-  </div>
-<% end %>
+</div>
