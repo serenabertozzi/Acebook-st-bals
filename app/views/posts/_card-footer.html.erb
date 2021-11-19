@@ -5,11 +5,10 @@
   </p>
   <% like_exists = post.likes.find { |like| like.user_id == session[:user_id] } %>
     <% if like_exists %>
-      <%= link_to "Unlike", post_like_path(post, like_exists), method: :delete, class: "btn btn-dark" %>
+      <%= link_to fa_icon("thumbs-down"), post_like_path(post, like_exists), method: :delete, class: "btn btn-dark" %>
     <% else %>
       <%= link_to fa_icon("thumbs-up"), post_likes_path(post), method: :post, class: "btn btn-dark" %>
     <% end %>
-
 
   <% if Current.user == post.user %>
     <%= link_to fa_icon("pencil-alt"), edit_post_path(post), class: "btn btn-primary" %>
