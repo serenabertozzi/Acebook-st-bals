@@ -1,3 +1,4 @@
+<div class="border shadow p-3 mb-5 bg-body rounded mt-5"> 
 <%= form_with(model: post, local: true) do |form| %>
   <% if post.errors.any? %>
     <div id="error_explanation">
@@ -14,25 +15,26 @@
     <div class="row justify-content-center">
       <div class="col-6 text-center m-3">
         <div class="field">
-          <%= form.text_field :message, class: "form-control my-2" %>
+          <%= form.text_field :message, class: "form-control mt-1", placeholder: "What's on your mind?" %>
         </div>
         <br>
         <div class="field">
-          <%= form.label :upload_Image %>
-          <%= form.file_field :pictures, multiple: true, class: "btn btn-light" %>
+          <%= form.label :upload_Image, class: "form-label" %>
+          <%= form.file_field :pictures, multiple: true, class: "form-control mt-1" %>
         </div>
         <br>
 
         <div class="field">
-          <%= form.label :upload_Video %>
-          <%= form.text_field :video_url %>
+          <%= form.label :upload_Video, class: "form-label" %>
+          <%= form.text_field :video_url, class: "form-control mt-1", placeholder: "Paste your URL here..." %>
         </div>
        <br>
 
         <div class="actions">
-          <%= form.submit class: "btn btn-primary" %>
+          <%= form.submit class: "btn btn-primary " %>
         </div>
       </div>
     </div>
   </div>
 <% end %>
+</div>

@@ -1,0 +1,30 @@
+
+  <% if post.pictures.count == 1 %>
+  <div class="d-flex justify-content-center">
+      <%= image_tag post.pictures[0], class: "card-img-top", style: "width: auto; max-height: 300px;" %>    
+  </div>
+  <% else %> 
+
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" style="max-height: 300px;">
+      <div class="carousel-inner">
+        <% (post.pictures).each do |slide, i| %>
+          <% if slide == post.pictures[0] %>
+          <div class="carousel-item active" style="max-height: 300px">
+          <% else %>
+           <div class="carousel-item" style="max-height: 300px">
+          <% end %>
+          <%= image_tag slide, class: "d-block w-100" %>
+          </div>
+        <% end %>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    
+  <% end %>
