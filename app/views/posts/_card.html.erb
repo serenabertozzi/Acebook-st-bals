@@ -18,6 +18,15 @@
             <%= render "images", post: post %>
           <% end %>
           </div>
+
+            <% # Video embed %>
+
+          <% unless post.video_url.empty? %>
+          <div class="d-flex justify-content-start">
+            <iframe max-width="80%" height="auto" src="<%= video_embed(post.video_url) %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <% end %>
+
         <% # Post message %>
           <p class="card-title my-3 ms-3">
             <% if post.message.length < 280 %>
@@ -43,11 +52,7 @@
               </div>
             <% end %>
           </p>
-          <% unless post.video_url.empty? %>
-          <div class="d-flex justify-content-start">
-            <iframe width="80%" height="auto" src="<%= video_embed(post.video_url) %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
-          <% end %>
+   
           <%= render "comments", post: post, class: "d-flex align-self-stretch" %>
         </div>
       </div>
