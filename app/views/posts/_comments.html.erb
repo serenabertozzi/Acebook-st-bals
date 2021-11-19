@@ -10,9 +10,9 @@
         <div class="col">
           <% unless post.comments.empty? %>
 
-          <a class="text-primary" data-bs-toggle="modal" data-bs-target="#commentModal">Read all comments [<%= post.comments.count %>]</a>
+          <a class="text-primary" data-bs-toggle="modal" data-bs-target="#commentModal_<%= post.id %>">Read all comments [<%= post.comments.count %>]</a>
 
-          <div class="modal fade" id="commentModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal fade" id="commentModal_<%= post.id %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
            <div class="modal-dialog modal-dialog-scrollable">
              <div class="modal-content">
                <div class="modal-header">
@@ -21,8 +21,8 @@
                </div>
                <div class="modal-footer d-flex justify-content-center">        
                 <%= form_for([post, Comment.new], remote: true) do |f| %>
-                <%= f.text_field :comment_text, placeholder: "Add a comment", label: false %>
-                <%= f.submit "Post Comment", class: "btn btn-dark", id: "post-submit", role: "status", remote: true %>
+                  <%= f.text_field :comment_text, placeholder: "Add a comment", label: false %>
+                  <%= f.submit "Post Comment", class: "btn btn-dark", id: "post-submit", role: "status", remote: true %>
                 <% end %>
                </div>
                <div class="modal-body">

@@ -1,23 +1,23 @@
 <% post.comments.each do |comment, i| %>
-      <div class="container">
-        <div class="row">
-          <div class="col-2 col-lg-2 d-flex flex-column text-center align-items-center mt-3">
-            <%= image_tag comment.user.display_profile_photo, class: "comment_avatar ms-3", style: "height:2em;width:2em" %>
-          </div>
-          <div class="col-8 col-lg-10 text-start">  
-           <p><%= comment.comment_text %> </p>
-              <% if Current.user %>
-              <% if Current.user.id == comment.user_id %>
+  <div class="container">
+    <div class="row">
+      <div class="col-2 col-lg-2 d-flex flex-column text-center align-items-center mt-3">
+        <%= image_tag comment.user.display_profile_photo, class: "comment_avatar ms-3", style: "height:2em;width:2em" %>
+      </div>
+      <div class="col-8 col-lg-10 text-start">  
+        <p><%= comment.comment_text %> </p>
+          <% if Current.user %>
+            <% if Current.user.id == comment.user_id %>
               <div class="d-flex mb-1">
-              <%= link_to "Edit Comment", edit_post_comment_path(post, comment) %>
+                <%= link_to "Edit Comment", edit_post_comment_path(post, comment) %>
               </div>
-              <% end %>
-              <% end %>
-                                        
-              <small>Posted by <%= comment.author %>, <%= time_ago_in_words(comment.created_at) %> ago.</small>
-              <br>
-          </div>
-          <hr>
-        </div>
-      </div>       
-    <% end %>
+            <% end %>
+          <% end %>
+                                    
+          <small>Posted by <%= comment.author %>, <%= time_ago_in_words(comment.created_at) %> ago.</small>
+          <br>
+      </div>
+      <hr>
+    </div>
+  </div>       
+<% end %>
