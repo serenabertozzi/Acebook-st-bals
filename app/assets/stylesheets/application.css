@@ -16,6 +16,10 @@
 /*
  *= require font-awesome
  */
+
+@import url("https://fonts.googleapis.com/css2?family=Libre+Barcode+EAN13+Text&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Flow+Circular&display=swap");
+
 .nav_avatar {
   border-radius: 54px;
   border: 1px solid black;
