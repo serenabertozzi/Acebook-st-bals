@@ -5,11 +5,15 @@
             <%= image_tag comment.user.display_profile_photo, class: "comment_avatar ms-3", style: "height:2em;width:2em" %>
           </div>
           <div class="col-8 col-lg-10 text-start">  
-            <% if comment.comment_text.length < 140 %>
-            <p><%= comment.comment_text %></p>
-            <% else %>
-              <p><%= truncate(comment.comment_text, length: 140) %></p>
-            <% end %>                         
+           <p><%= comment.comment_text %> </p>
+              <% if Current.user %>
+              <% if Current.user.id == comment.user_id %>
+              <div class="d-flex mb-1">
+              <%= link_to "Edit Comment", edit_post_comment_path(post, comment) %>
+              </div>
+              <% end %>
+              <% end %>
+                                        
               <small>Posted by <%= comment.author %>, <%= time_ago_in_words(comment.created_at) %> ago.</small>
               <br>
           </div>

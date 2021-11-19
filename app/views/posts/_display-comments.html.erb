@@ -4,12 +4,19 @@
           <div class="col-2 col-lg-2 d-flex flex-column text-center align-items-center mt-3">
             <%= image_tag comment.user.display_profile_photo, class: "comment_avatar ms-3", style: "height:2em;width:2em" %>
           </div>
-          <div class="col-8 col-lg-10 text-start">  
-            <% if comment.comment_text.length < 140 %>
+          <div class="col-8 col-lg-10 text-start me-2">  
+            <% if comment.comment_text.length < 40 %>
             <p><%= comment.comment_text %></p>
             <% else %>
-              <p><%= truncate(comment.comment_text, length: 140) %></p>
-            <% end %>                         
+              <p><%= truncate(comment.comment_text, length: 40) %></p>
+            <% end %> 
+              <div class="d-flex mb-2">
+              <% if Current.user %>
+              <% if Current.user.id == comment.user_id %>
+              <%= link_to "Edit Comment", edit_post_comment_path(post, comment) %>
+              <% end %>  
+              <% end %>
+              </div>  
               <small>Posted by <%= comment.author %>, <%= time_ago_in_words(comment.created_at) %> ago.</small>
           </div>
         </div>
